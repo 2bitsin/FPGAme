@@ -1,0 +1,2 @@
+TX|SCK - U8 / 45 - BANK_5B_N20
+RX|SDA - U8 / 53 - BANK_5B_M22
