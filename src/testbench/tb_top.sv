@@ -18,11 +18,23 @@ module tb_top();
     reset <= 0;  #1;
     reset <= 1;  #1;  
   
-    while ($realtime < 100000)    
+    while ($realtime < 10000)    
     begin
       clock <= 1;  #1; 
-      clock <= 0;  #1;    
+      clock <= 0;  #1;          
     end
+
+    reset <= 1;  #1;
+    reset <= 0;  #1;
+    reset <= 1;  #1;  
+
+    while ($realtime < 20000)    
+    begin
+      clock <= 1;  #1; 
+      clock <= 0;  #1;          
+    end
+
+
   end
 
 
