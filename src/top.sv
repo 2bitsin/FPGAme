@@ -22,7 +22,35 @@ module top(
 	output	wire			aud_mclk,
 	output 	wire			aud_wclk,
 	output	wire			aud_sclk,
-	output	wire			aud_data);
+	output	wire			aud_data,
+	
+	output 	wire			mb0_addr[18:0],
+	inout   wire      mb0_data[7:0],
+	output  wire			mb0_oe,
+	output  wire			mb0_we,
+	output  wire			mb0_ce,
+	
+	output 	wire			mb1_addr[18:0],
+	inout   wire      mb1_data[7:0],
+	output  wire			mb1_oe,
+	output  wire			mb1_we,
+	output  wire			mb1_ce,
+	
+	input		wire			jp0_up,
+	input		wire			jp0_down,
+	input		wire			jp0_left,
+	input		wire			jp0_right,
+	input		wire			jp0_a_b,
+	input		wire			jp0_c_s,
+	output  wire			jp0_sel,
+	
+	input		wire			jp1_up,
+	input		wire			jp1_down,
+	input		wire			jp1_left,
+	input		wire			jp1_right,
+	input		wire			jp1_a_b,
+	input		wire			jp1_c_s,
+	output  wire			jp1_sel);
 
 		
 	wire clock_video;
@@ -33,12 +61,6 @@ module top(
 	assign io_rx = 0;
 	assign led = ~reset;
 		
-	//`ID_PIN(io_rx, 8'h01);
-	//`ID_PIN(io_tx, 8'h02);
-	//`ID_PIN(vid_clock, 8'h03);
-	//`ID_PIN(vid_blank, 8'h04);
-	//`ID_PIN(vid_hsync, 8'h05);
-	//`ID_PIN(vid_vsync, 8'h06);
 	
 	mod_altera_pll _clockgen (
 		.refclk     ( clock        ),

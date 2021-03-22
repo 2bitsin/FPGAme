@@ -180,3 +180,155 @@ set_location_assignment PIN_A7 -to aud_mclk
 set_location_assignment PIN_A9 -to aud_sclk
 set_location_assignment PIN_A8 -to aud_wclk
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_location_assignment PIN_U2 -to mb0_we
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_we
+set_location_assignment PIN_C2 -to mb0_oe
+set_location_assignment PIN_D6 -to mb0_addr[0]
+set_location_assignment PIN_F7 -to mb0_addr[1]
+set_location_assignment PIN_G8 -to mb0_addr[2]
+set_location_assignment PIN_G6 -to mb0_addr[3]
+set_location_assignment PIN_C1 -to mb0_addr[4]
+set_location_assignment PIN_E2 -to mb0_addr[5]
+set_location_assignment PIN_G1 -to mb0_addr[6]
+set_location_assignment PIN_L1 -to mb0_addr[7]
+set_location_assignment PIN_L2 -to mb0_addr[8]
+set_location_assignment PIN_G2 -to mb0_addr[9]
+set_location_assignment PIN_H6 -to mb0_addr[10]
+set_location_assignment PIN_D3 -to mb0_addr[11]
+set_location_assignment PIN_N1 -to mb0_addr[12]
+set_location_assignment PIN_N2 -to mb0_addr[13]
+set_location_assignment PIN_U1 -to mb0_addr[14]
+set_location_assignment PIN_AA1 -to mb0_addr[15]
+set_location_assignment PIN_Y3 -to mb0_addr[16]
+set_location_assignment PIN_W2 -to mb0_addr[17]
+set_location_assignment PIN_AA2 -to mb0_addr[18]
+set_location_assignment PIN_H8 -to mb0_ce
+set_location_assignment PIN_E9 -to mb0_data[0]
+set_location_assignment PIN_B5 -to mb0_data[1]
+set_location_assignment PIN_B6 -to mb0_data[2]
+set_location_assignment PIN_B7 -to mb0_data[3]
+set_location_assignment PIN_A5 -to mb0_data[4]
+set_location_assignment PIN_D9 -to mb0_data[5]
+set_location_assignment PIN_C6 -to mb0_data[6]
+set_location_assignment PIN_E7 -to mb0_data[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_oe
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[10]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[11]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[12]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[13]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[14]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[15]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[16]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[17]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr[18]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_ce
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_data[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_data[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_data[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_data[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_data[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_data[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_data[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_data[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_data
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to jp0_a_b
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to jp0_c_s
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to jp0_down
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to jp0_left
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to jp0_right
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to jp0_sel
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to jp0_up
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to jp1_a_b
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to jp1_c_s
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to jp1_down
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to jp1_left
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to jp1_right
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to jp1_sel
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to jp1_up
+set_location_assignment PIN_B10 -to jp0_up
+set_location_assignment PIN_C9 -to jp0_a_b
+set_location_assignment PIN_A12 -to jp0_c_s
+set_location_assignment PIN_G10 -to jp0_down
+set_location_assignment PIN_B11 -to jp0_left
+set_location_assignment PIN_B12 -to jp0_right
+set_location_assignment PIN_F10 -to jp0_sel
+set_location_assignment PIN_D12 -to jp1_a_b
+set_location_assignment PIN_A14 -to jp1_c_s
+set_location_assignment PIN_D13 -to jp1_down
+set_location_assignment PIN_A13 -to jp1_left
+set_location_assignment PIN_A15 -to jp1_right
+set_location_assignment PIN_C13 -to jp1_sel
+set_location_assignment PIN_E12 -to jp1_up
+set_location_assignment PIN_Y21 -to mb1_addr[0]
+set_location_assignment PIN_W22 -to mb1_addr[1]
+set_location_assignment PIN_AA22 -to mb1_addr[2]
+set_location_assignment PIN_AB21 -to mb1_addr[3]
+set_location_assignment PIN_Y20 -to mb1_addr[4]
+set_location_assignment PIN_AA20 -to mb1_addr[5]
+set_location_assignment PIN_AA18 -to mb1_addr[6]
+set_location_assignment PIN_Y17 -to mb1_addr[7]
+set_location_assignment PIN_Y16 -to mb1_addr[8]
+set_location_assignment PIN_AA17 -to mb1_addr[9]
+set_location_assignment PIN_AB20 -to mb1_addr[10]
+set_location_assignment PIN_AA19 -to mb1_addr[11]
+set_location_assignment PIN_AB18 -to mb1_addr[12]
+set_location_assignment PIN_AB17 -to mb1_addr[13]
+set_location_assignment PIN_Y15 -to mb1_addr[14]
+set_location_assignment PIN_AA13 -to mb1_addr[15]
+set_location_assignment PIN_AA15 -to mb1_addr[16]
+set_location_assignment PIN_AB15 -to mb1_addr[17]
+set_location_assignment PIN_AA14 -to mb1_addr[18]
+set_location_assignment PIN_AB22 -to mb1_ce
+set_location_assignment PIN_U22 -to mb1_data[0]
+set_location_assignment PIN_V20 -to mb1_data[1]
+set_location_assignment PIN_U21 -to mb1_data[2]
+set_location_assignment PIN_U20 -to mb1_data[3]
+set_location_assignment PIN_W19 -to mb1_data[4]
+set_location_assignment PIN_V21 -to mb1_data[5]
+set_location_assignment PIN_W21 -to mb1_data[6]
+set_location_assignment PIN_Y22 -to mb1_data[7]
+set_location_assignment PIN_Y19 -to mb1_oe
+set_location_assignment PIN_Y14 -to mb1_we
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb0_addr
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[10]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[11]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[12]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[13]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[14]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_ce
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_data[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_data[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_data[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_data[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_data[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_data[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[18]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[17]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[16]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr[15]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_addr
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_data[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_data[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_data
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_oe
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_we
