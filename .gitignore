@@ -3,6 +3,11 @@
 /output_files/
 /build/
 *.bak
+*.log
+/.qsys_edit/
 /testbench/
 /trace/
+/simulation/
+/timing/
+/board/
 c5_pin_model_dump.txt

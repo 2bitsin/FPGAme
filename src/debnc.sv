@@ -9,8 +9,7 @@ module debnc #(parameter TimeOut = 1000, Inverted = 0) (clock, sigin, sigout);
 
   typedef bit[Q-1:0] period_type;
 
-  period_type count_down = 0;
-
+  period_type count_down = period_type' (TimeOut - 1);
 
   generate
     if (!Inverted) begin

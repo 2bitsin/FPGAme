@@ -78,14 +78,14 @@ set_location_assignment PIN_M9 -to clock
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_location_assignment PIN_C11 -to io_rx
-set_location_assignment PIN_B13 -to io_tx
+set_location_assignment PIN_B13 -to io_rx
+set_location_assignment PIN_C11 -to io_tx
 set_location_assignment PIN_V18 -to reset
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to reset
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to io_rx
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to io_tx
 set_location_assignment PIN_D17 -to led
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led
 set_global_assignment -name EDA_DESIGN_ENTRY_SYNTHESIS_TOOL "Synplify Pro" -entity clkdiv.sv
 set_global_assignment -name EDA_INPUT_GND_NAME GND -entity clkdiv.sv -section_id eda_design_synthesis
 set_global_assignment -name EDA_INPUT_VCC_NAME VCC -entity clkdiv.sv -section_id eda_design_synthesis
@@ -101,9 +101,82 @@ set_global_assignment -name EDA_SHOW_LMF_MAPPING_MESSAGES OFF -entity uart_tx.sv
 set_global_assignment -name EDA_RUN_TOOL_AUTOMATICALLY OFF -entity uart_tx.sv -section_id eda_design_synthesis
 set_global_assignment -name EDA_INPUT_DATA_FORMAT VQM -entity uart_tx.sv -section_id eda_design_synthesis
 set_global_assignment -name NUM_PARALLEL_PROCESSORS 16
+set_location_assignment PIN_B15 -to vid_clock
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_clock
+set_location_assignment PIN_C15 -to vid_blank
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_blank
+set_location_assignment PIN_C16 -to vid_hsync
+set_location_assignment PIN_B16 -to vid_vsync
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_vsync
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_hsync
+set_location_assignment PIN_R22 -to vid_red[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_red[0]
+set_location_assignment PIN_T22 -to vid_red[1]
+set_location_assignment PIN_P22 -to vid_red[2]
+set_location_assignment PIN_R21 -to vid_red[3]
+set_location_assignment PIN_T20 -to vid_red[4]
+set_location_assignment PIN_T19 -to vid_red[5]
+set_location_assignment PIN_P16 -to vid_red[6]
+set_location_assignment PIN_P17 -to vid_red[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_red[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_red[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_red[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_red[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_red[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_green[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_green[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_blue[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_blue[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_blue[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_blue[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_blue[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_blue[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_blue[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_blue[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_blue
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_green[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_green[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_green[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_green[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_green[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_green[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_green
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_red[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_red[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to vid_red
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to clock
+set_location_assignment PIN_N20 -to vid_green[0]
+set_location_assignment PIN_N21 -to vid_green[1]
+set_location_assignment PIN_M21 -to vid_green[2]
+set_location_assignment PIN_M20 -to vid_green[3]
+set_location_assignment PIN_M18 -to vid_green[4]
+set_location_assignment PIN_N19 -to vid_green[5]
+set_location_assignment PIN_L18 -to vid_green[6]
+set_location_assignment PIN_L19 -to vid_green[7]
+set_location_assignment PIN_M22 -to vid_blue[0]
+set_location_assignment PIN_L22 -to vid_blue[1]
+set_location_assignment PIN_L17 -to vid_blue[2]
+set_location_assignment PIN_K17 -to vid_blue[3]
+set_location_assignment PIN_K22 -to vid_blue[4]
+set_location_assignment PIN_K21 -to vid_blue[5]
+set_location_assignment PIN_M16 -to vid_blue[6]
+set_location_assignment PIN_N16 -to vid_blue[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 16MA -to led
+set_global_assignment -name SYSTEMVERILOG_FILE src/audio.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/video.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/debnc.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/clkdiv.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/uart_tx.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/top.sv
 set_global_assignment -name SDC_FILE src/constraints.sdc
+set_global_assignment -name QIP_FILE src_ip/mod_altera_pll.qip
+set_global_assignment -name SIP_FILE src_ip/mod_altera_pll.sip
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to aud_data
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to aud_mclk
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to aud_sclk
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to aud_wclk
+set_location_assignment PIN_A10 -to aud_data
+set_location_assignment PIN_A7 -to aud_mclk
+set_location_assignment PIN_A9 -to aud_sclk
+set_location_assignment PIN_A8 -to aud_wclk
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -23,6 +23,27 @@ module tb_clkdiv ();
     end
   endgenerate;
 
+  wire t_512_to_1;
+  wire t_512_to_64;
+
+  clkdiv 
+  #( .From    (512),
+     .DownTo  (1))
+     _dut_512_to_1
+     ( .clock (clock),
+       .reset (reset),
+       .ckena (reset),
+       .ckout (t_512_to_1));
+
+  clkdiv 
+  #( .From    (512),
+     .DownTo  (64))
+     _dut_512_to_64
+     ( .clock (clock),
+       .reset (reset),
+       .ckena (reset),
+       .ckout (t_512_to_64));
+
   initial
   begin
     $dumpfile("trace/tb_clkdiv.vcd");
@@ -42,7 +63,9 @@ module tb_clkdiv ();
       _instances[13]._dut, 
       _instances[14]._dut, 
       _instances[15]._dut, 
-      _instances[16]._dut);
+      _instances[16]._dut,
+      t_512_to_1,
+      t_512_to_64);
 
     reset <= 1;
     clock <= 0;

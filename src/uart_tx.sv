@@ -1,41 +1,53 @@
 
-module uart_tx #(parameter Clock = 50000000, Baud = 9600) (clock, reset, txen, data, txd, cts);
+module uart_tx #(parameter Clock = 50000000, Baud = 9600, Stop = 2) (clock, reset, data, txd, cts, reptx);
 
   localparam T = integer' (Clock/Baud);
   localparam Q = $clog2 (T);
+  localparam S = $clog2 (10 + Stop);
 
   input   wire        clock;
-  input   wire        reset;
-  input   wire        txen;
+  input   wire        reset;  
   input   wire[7:0]   data;
+	input 	wire				reptx;
 
-  output  wire        txd;
+  output  bit         txd;
   output  wire        cts;
 
-          bit[3:0]    state;
+          wire        clktx;
+
+          bit[S-1:0]  state;
           bit[7:0]    dataw;
-          bit[Q-1:0]  ckdiv;
 
+  assign txd =  (~reset || state >= 10 || state == 0) ? 1 :
+                (state == 1) ? 0 :
+                dataw[state-2];                
+  assign cts =  (state == (10 + Stop));
 
-  assign txd =  (~txen || state >= 9) ? 1 :
-                (state == 0)          ? 0 :
-                                        dataw[state-1];
-  assign cts =  (state == 9);
-  
-  always @(posedge clock or negedge reset)
-  if (~reset) begin
-    {state, dataw, ckdiv} <= 0;
-  end else if (txen) begin
-    if (ckdiv != T)
-      ckdiv <= ckdiv + 1;
-    else begin
-      if (state == 0)
+  clkdiv 
+    #(.From   (Clock), 
+      .DownTo (Baud)) 
+    baudg 
+    ( .clock  (clock),        
+      .reset  (reset), 
+      .ckena  (reset), 
+      .ckout  (clktx));
+
+  always @(negedge clktx or negedge reset)
+  begin
+    if (~reset)
+    begin
+      state <= 0;
+      dataw <= data;
+    end else 
+    begin      
+      if (state != (Stop + 10))
+        state <= state + 1;
+			else if (reptx)
+				state <= 0;			
+			if (state == 1)
         dataw <= data;
-      ckdiv <= 0;      
-      state <= state + 1;
-    end        
-  end else begin
-    state <= 0;
+    end
   end
+
 
 endmodule  

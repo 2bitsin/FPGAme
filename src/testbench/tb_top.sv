@@ -14,11 +14,12 @@ module tb_top();
     $dumpfile("trace/tb_top.vcd");        
     $dumpvars(1, _dut);
     
+    clock <= 0;
     reset <= 1;  #1;
     reset <= 0;  #1;
     reset <= 1;  #1;  
   
-    while ($realtime < 10000)    
+    while ($realtime < 100000)    
     begin
       clock <= 1;  #1; 
       clock <= 0;  #1;          
@@ -28,7 +29,7 @@ module tb_top();
     reset <= 0;  #1;
     reset <= 1;  #1;  
 
-    while ($realtime < 20000)    
+    while ($realtime < 600000)    
     begin
       clock <= 1;  #1; 
       clock <= 0;  #1;          

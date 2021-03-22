@@ -61,19 +61,25 @@ module clkdiv #(parameter From = 50000000, DownTo = 9600) (clock, reset, ckout, 
     end
     else 
     begin
-      period_type ckout_t = period_type' (-1);
+      period_type ckout_t;
       assign ckout = ckena ? ~ckout_t[Q-1] : 1'b0;
-      always @(negedge reset)
-        ckout_t <= -1;
-      always @(posedge clock) if (ckena)
-      begin
-        if (ckout_t != T-1)
-          ckout_t <= ckout_t + 1;
-        else 
-          ckout_t <= 0;
-      end
+      always @(posedge clock, negedge reset) 
+			begin
+				if (~reset) 
+				begin
+					ckout_t <= period_type' (-1);
+				end else
+				begin
+					if (ckena)
+					begin
+						if (ckout_t != T-1)
+							ckout_t <= ckout_t + 1;
+						else 
+							ckout_t <= 0;
+					end
+				end
+			end
     end
-    
 
   endgenerate
 
