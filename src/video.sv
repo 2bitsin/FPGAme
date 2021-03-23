@@ -24,24 +24,32 @@ module video (
 	localparam shortint DotHorSyncPulseEnd	= DotHorizontalActive + DotHorFrontPorch + DotHorSyncPulse;
 	localparam shortint DotVerSyncPulseBeg	= DotVerticalActive + DotVerFrontPorch;
 	localparam shortint DotVerSyncPulseEnd	= DotVerticalActive + DotVerFrontPorch + DotVerSyncPulse;
-	
 		
+	reg [31:0] 	palette [0:255];	
+	reg [7:0] 	bitmap 	[0:76800];
+
 	// Need to latch vsync/hsync because they are
-	bit				lat_vsync				= 0; 
-	bit				lat_hsync				= 0; 
-	
-	bit[9:0] 	dot_horizontal 	= 0;
-	bit[8:0] 	dot_vertical 		= 0;
-	
-	assign 		out_clock 			= inp_clock;
-	assign 		out_vsync				= lat_vsync;
-	assign 		out_hsync				= lat_hsync;
-	assign 		out_blank				= (dot_horizontal < DotHorizontalActive) && (dot_vertical < DotVerticalActive);
-		
-	assign 		out_red 				= dot_horizontal [5] ? 8'hff : 8'h00;
-	assign 		out_green 			= dot_vertical [5] ? 8'h00 : 8'hff;
-	assign 		out_blue				= (dot_vertical [5] ^ dot_horizontal [5]) ? 8'hff : 8'h00;
-		
+	bit				  lat_vsync				= 0; 
+	bit				  lat_hsync				= 0; 
+	  
+	bit[31:0]	  dot_horizontal 	= 0;
+	bit[31:0]	  dot_vertical 		= 0;
+	  
+	assign 		  out_clock 			= inp_clock;
+	assign 		  out_vsync				= lat_vsync;
+	assign 		  out_hsync				= lat_hsync;
+	assign 		  out_blank				= (dot_horizontal < DotHorizontalActive) && (dot_vertical < DotVerticalActive);
+		  
+	wire[31:0]  half_pixel_y		= int' (dot_vertical >> 1);
+	wire[31:0]  half_pixel_x		= int' (dot_horizontal >> 1);
+	wire[31:0]  pixel_address		= (half_pixel_y << 8) + (half_pixel_y << 6) + half_pixel_x;
+	  
+	wire[7:0]   pixel_index			= bitmap [pixel_address];
+		  
+	assign 		  out_red 				= palette[pixel_index][7:0];
+	assign 		  out_green 			= palette[pixel_index][15:8];
+	assign 		  out_blue				= palette[pixel_index][23:16];
+			
 	always @(posedge inp_clock, negedge inp_reset)
 	begin
 		if (~inp_reset)
