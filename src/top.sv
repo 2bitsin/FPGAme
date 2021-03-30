@@ -57,38 +57,11 @@ module top(
 	wire clock_audio;
 	wire clock_locked;
 	
-	assign io_tx = 0; 
-	assign io_rx = 0;
-	assign led = ~reset;
+	assign led = ~reset & clock_locked;
 		
 	
-	mod_altera_pll _clockgen (
-		.refclk     ( clock        ),
-	  .rst        ( ~reset       ),
-		.outclk_0   ( clock_video  ),
-		.outclk_1   ( clock_audio  ),
-		.locked     ( clock_locked )
-	);
-	
-	video _video_driver (	
-		.out_red		( vid_red	     ),		
-		.out_green	( vid_green    ),
-		.out_blue		( vid_blue     ),
-		.out_hsync	( vid_hsync    ),
-		.out_vsync	( vid_vsync    ),
-		.out_blank	( vid_blank    ),
-		.out_clock	( vid_clock    ),		
-		.inp_clock	( clock_video  ),
-		.inp_reset  ( reset        )
-	);
-	
-	audio _audio_driver (
-	  .inp_clock	( clock_audio  ),
-		.inp_reset  ( reset				 ),
-		.out_mclk		( aud_mclk     ),
-		.out_wclk   ( aud_wclk     ),
-		.out_sclk   ( aud_sclk     ),
-		.out_data   ( aud_data     )
-	);
+	mod_altera_pll 	e0 (clock, ~reset, clock_video, clock_audio, clock_locked);	
+	video 					e1 (clock_video, reset, vid_red, vid_green, vid_blue, vid_hsync, vid_vsync, vid_blank, vid_clock);	
+	audio 					e2 (clock_audio, reset, aud_mclk, aud_wclk, aud_sclk, aud_data);
 
 endmodule

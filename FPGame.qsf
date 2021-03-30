@@ -322,9 +322,8 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_data[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_data
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_oe
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_we
-set_global_assignment -name MIF_FILE assets/audio.mif
-set_global_assignment -name MIF_FILE assets/pal.mif
-set_global_assignment -name MIF_FILE assets/img.mif
+set_global_assignment -name MIF_FILE assets/mario.pal.mif
+set_global_assignment -name MIF_FILE assets/mario.img.mif
 set_global_assignment -name SYSTEMVERILOG_FILE src/audio.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/video.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/debnc.sv
