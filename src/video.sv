@@ -39,25 +39,8 @@ module video (
 	assign 			out_clock 	= clock;
 	assign 			out_blank 	= counter_v >= G_blank_v && counter_h >= G_blank_h;
 	
-	localparam 	delay = 2;
 	
-	wire[7:0]		idx_h  	= counter_h >= G_blank_h - delay ? counter_h - G_blank_h + delay : 0;	
-	wire[7:0]		idx_v  	= counter_v >= G_blank_v ? counter_v - G_blank_v : 0;
-	wire[15:0]	idx_g		= {idx_v[7:0], idx_h[7:0]};
-	
-	
-	(* ram_init_file = "assets/mario.img.mif" *)
-	bit[7:0]		bitmap[61439:0];
-	
-	(* ram_init_file = "assets/mario.pal.mif" *)
-	bit[31:0]		palette[10:0];
-	
-	bit[7:0]		bitmap_bits 	= 0;
-	bit[32:0]		palette_bits 	= 0;
-			
-	assign 			out_red   	= palette_bits[23:16];
-	assign 			out_green 	= palette_bits[15:8];
-	assign 			out_blue  	= palette_bits[7:0];	
+	font8x16 fontbits (0,);
 	
 	always @(posedge clock, negedge reset)
 	begin
@@ -68,9 +51,7 @@ module video (
 			lat_vsync <= 0;
 		end
 		else begin
-			palette_bits <= palette[bitmap_bits];
-			bitmap_bits <= bitmap[idx_g];
-		
+
 			if (counter_h == G_ticks_h - 1) 
 			begin
 				counter_h <= 0;
