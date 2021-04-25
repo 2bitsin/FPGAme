@@ -329,7 +329,8 @@ set_global_assignment -name EDA_LMF_FILE synplcty.lmf -entity Q2A03.sv -section_
 set_global_assignment -name EDA_SHOW_LMF_MAPPING_MESSAGES OFF -entity Q2A03.sv -section_id eda_design_synthesis
 set_global_assignment -name EDA_RUN_TOOL_AUTOMATICALLY OFF -entity Q2A03.sv -section_id eda_design_synthesis
 set_global_assignment -name EDA_INPUT_DATA_FORMAT VQM -entity Q2A03.sv -section_id eda_design_synthesis
-set_global_assignment -name SYSTEMVERILOG_FILE src/screen0.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/testrom.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/dual_port_ram.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/Q2A03.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/font8x16.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/audio.sv

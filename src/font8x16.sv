@@ -2,7 +2,6 @@
 module font8x16 (clock, addr, data);
 	input wire clock;
 	input wire[11:0] addr;
-	(* romstyle = "M10K" *)
 	output bit[7:0] data;
 	always @(posedge clock)
 	begin

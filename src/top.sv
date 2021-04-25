@@ -54,32 +54,61 @@ module top(
 
 		
 	wire clock_video;
-	wire clock_audio;
+	wire clock_system;
 	wire clock_locked;
 	
 	assign led = ~reset & clock_locked;
+	
+	wire[15:0] 	cpu_addr;
+	wire				cpu_rdwr;
+	wire[7:0]		cpu_rd_data;
+	wire[7:0]		cpu_wr_data;
+	wire 				cpu_sync;
+	wire				cpu_phy2;
+	wire				cpu_ready = 1;
+	wire				cpu_nmi = 1;
+	wire				cpu_irq = 1;
+	
+	wire[15:0]	ppu_addr;
+	wire				ppu_cs;	
+	wire				ppu_rdwr;
+	wire[7:0]		ppu_wr_data;
+	wire[7:0]		ppu_rd_data;
+	
+	wire[14:0]	ram_addr;
+	wire				ram_cs;
+	wire				ram_rdwr;
+	wire[7:0]		ram_wr_data;
+	wire[7:0]		ram_rd_data;
+	
+	wire[14:0]	rom_addr;
+	wire				rom_cs;
+	wire				rom_rdwr;
+	wire[7:0]		rom_wr_data;
+	wire[7:0]		rom_rd_data;
+	
+	assign			ppu_addr 		= {7'h00, cpu_addr[8:0]};
+	assign 			ppu_cs			= cpu_addr[15:9] == 7'h3F;	
+	assign			ppu_rdwr		= cpu_rdwr;
+	assign			ppu_wr_data	= cpu_wr_data;
+	assign			ppu_rd_data = cpu_rd_data;
+	
+	assign			ram_addr		= cpu_addr[14:0];
+	assign			ram_cs			= ~cpu_addr[15] && ~ppu_cs;
+	assign			ram_rdwr		= cpu_rdwr;
+	assign			ram_wr_data	= cpu_wr_data;
+	assign			ram_rd_data = cpu_rd_data;
+	
+	assign			rom_addr		= cpu_addr[14:0];
+	assign			rom_cs			= cpu_addr[15];
+	assign			rom_rdwr		= cpu_rdwr;
+	assign			rom_wr_data	= cpu_wr_data;
+	assign			rom_rd_data = cpu_rd_data;
 		
 	
-	mod_altera_pll 	e0 (clock, ~reset, clock_video, clock_audio, clock_locked);	
-	video 					e1 (clock_video, reset, vid_red, vid_green, vid_blue, vid_hsync, vid_vsync, vid_blank, vid_clock);		
-	audio 					e2 (clock_audio, reset, aud_mclk, aud_wclk, aud_sclk, aud_data);
-	Q2A03						e3 (clock, reset, 1, 1, /*addr*/, /*wr_data*/, 0, /*rdwr*/, 1, /*sync*/, /*phy2*/);
- 	
-	task automatic foo (	
-		input 	wire a, 
-		output 	wire b);
-		
-		bit ck = 0;		
-		
-		begin
-			ck <= ~ck;
-			b <= (ck + a);
-		end
-	endtask
-
-	always @(posedge clock)
-	begin
-		foo(1'b1, io_tx);
-		foo(1'b0, io_rx);
-	end
+	mod_altera_pll 					e0 (clock, ~reset, clock_video, clock_audio, clock_locked);											
+	video 									e1 (clock_video, reset, vid_red, vid_green, vid_blue, vid_hsync, vid_vsync, vid_blank, vid_clock, clock_system, ppu_addr, ppu_rdwr, ppu_cs, ppu_wr_data, ppu_rd_data);		
+ 	dual_port_ram #(32768)  e2 (clock_system, ram_cs, ram_addr, ram_rdwr, ram_rd_data, ram_wr_data, , , , , );
+	Q2A03										e3 (clock_system, reset, cpu_irq, cpu_nmi, cpu_addr, cpu_wr_data, cpu_rd_data, cpu_rdwr, cpu_ready, cpu_sync, cpu_phy2);
+	testrom									e4 (clock_system, rom_cs, rom_addr, rom_rd_data);
 endmodule
