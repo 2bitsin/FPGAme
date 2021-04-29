@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<simPackage>
- <file path="mod_altera_pll_sim/mod_altera_pll.vo" type="VERILOG" />
- <topLevel name="mod_altera_pll" />
- <deviceFamily name="cyclonev" />
-</simPackage>
