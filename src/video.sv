@@ -111,4 +111,10 @@ module video (
 				end  				
 					
 				O_vid_hsync <= (counter_h < G_front_h) || (counter_h >= (G_blank_h - G_back_h));
-				O_vid_vsync <= (counter_v < G_fr
+				O_vid_vsync <= (counter_v < G_front_v) || (counter_v >= (G_blank_v - G_back_v));
+			end
+
+		end	
+	end
+endmodule
+
