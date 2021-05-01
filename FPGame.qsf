@@ -322,6 +322,7 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_data[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_data
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_oe
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_we
+set_instance_assignment -name NOT_A_CLOCK ON -to "widget:instance_of_widget|core:inst_core|curr_cycle[0]"
 set_global_assignment -name EDA_DESIGN_ENTRY_SYNTHESIS_TOOL "Synplify Pro" -entity Q2A03.sv
 set_global_assignment -name EDA_INPUT_GND_NAME GND -entity Q2A03.sv -section_id eda_design_synthesis
 set_global_assignment -name EDA_INPUT_VCC_NAME VCC -entity Q2A03.sv -section_id eda_design_synthesis
@@ -329,6 +330,7 @@ set_global_assignment -name EDA_LMF_FILE synplcty.lmf -entity Q2A03.sv -section_
 set_global_assignment -name EDA_SHOW_LMF_MAPPING_MESSAGES OFF -entity Q2A03.sv -section_id eda_design_synthesis
 set_global_assignment -name EDA_RUN_TOOL_AUTOMATICALLY OFF -entity Q2A03.sv -section_id eda_design_synthesis
 set_global_assignment -name EDA_INPUT_DATA_FORMAT VQM -entity Q2A03.sv -section_id eda_design_synthesis
+set_global_assignment -name SYSTEMVERILOG_FILE src/register.sv
 set_global_assignment -name SOURCE_FILE src/vid.mem
 set_global_assignment -name SOURCE_FILE src/8x8.mem
 set_global_assignment -name SYSTEMVERILOG_FILE src/top.sv
