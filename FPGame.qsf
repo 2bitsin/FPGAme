@@ -330,14 +330,19 @@ set_global_assignment -name EDA_LMF_FILE synplcty.lmf -entity Q2A03.sv -section_
 set_global_assignment -name EDA_SHOW_LMF_MAPPING_MESSAGES OFF -entity Q2A03.sv -section_id eda_design_synthesis
 set_global_assignment -name EDA_RUN_TOOL_AUTOMATICALLY OFF -entity Q2A03.sv -section_id eda_design_synthesis
 set_global_assignment -name EDA_INPUT_DATA_FORMAT VQM -entity Q2A03.sv -section_id eda_design_synthesis
-set_global_assignment -name SYSTEMVERILOG_FILE src/register.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/core_alu_ctl.sv
+set_global_assignment -name SOURCE_FILE src/core/cycles.svi
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/widget.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/video.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/register.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/dpmem.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/core_alu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/core.sv
 set_global_assignment -name SOURCE_FILE src/vid.mem
 set_global_assignment -name SOURCE_FILE src/8x8.mem
 set_global_assignment -name SYSTEMVERILOG_FILE src/top.sv
-set_global_assignment -name SYSTEMVERILOG_FILE src/dpmem.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/widget.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/video.sv
-set_global_assignment -name SYSTEMVERILOG_FILE src/core.sv
 set_global_assignment -name SDC_FILE src/constraints.sdc
 set_global_assignment -name QIP_FILE src_ip/m_altera_pll.qip
 set_global_assignment -name SIP_FILE src_ip/m_altera_pll.sip
