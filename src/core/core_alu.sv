@@ -28,27 +28,24 @@ module core_alu (I_control, I_mask_p, I_lhs, I_rhs, I_carry, I_overflow, I_sign,
     O_carry     = I_carry;
     O_result    = I_lhs;
 
-    carry    = I_carry;
-    rhs         = 9'(I_rhs);
+    
+    rhs = 9'(I_rhs);
 
-    if (I_control[control_rhs_assign])
-      O_result = I_rhs;
-
-    if (I_control[control_clear_carry])
-      carry = 1'b0;
-
-    if (I_control[control_inv_I_carry])
-      carry = ~carry;
+    if (I_control[control_clear_rhs])
+      rhs = 9'd0;
 
     if (I_control[control_invert_rhs])
       rhs = ~rhs;
 
-    if (I_control[control_rhs_pos_one])
-      rhs = 9'd1;
-    else if (I_control[control_rhs_neg_one])
-      rhs = -9'd1;
+    carry = I_carry;
+    if (I_control[control_clear_carry])
+      carry = 1'b0;
+    if (I_control[control_inv_I_carry])
+      carry = ~carry;
 
-    if (I_control[control_adc_rhs])
+    if (I_control[control_rhs_assign])
+      O_result = rhs[7:0];
+    else if (I_control[control_adc_rhs])
       {carry, O_result} = 9'(I_lhs) + rhs + 9'(carry);
     else if (I_control[control_result_and])
       O_result = I_lhs & rhs[7:0];    
