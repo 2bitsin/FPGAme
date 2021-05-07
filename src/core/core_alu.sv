@@ -3,7 +3,7 @@ module core_alu (I_control, I_mask_p, I_lhs, I_rhs, I_carry, I_overflow, I_sign,
   import core_alu_ctl::*;
 
   input control_type I_control;    
-  input wire[3:0] I_mask_p;
+  input wire I_mask_p;
   input wire[7:0] I_lhs;
   input wire[7:0] I_rhs;
   input wire I_carry;
@@ -45,7 +45,7 @@ module core_alu (I_control, I_mask_p, I_lhs, I_rhs, I_carry, I_overflow, I_sign,
 
     if (I_control[control_rhs_pos_one])
       rhs = 9'd1;
-    else  if (I_control[control_rhs_neg_one])
+    else if (I_control[control_rhs_neg_one])
       rhs = -9'd1;
 
     if (I_control[control_adc_rhs])
@@ -61,7 +61,7 @@ module core_alu (I_control, I_mask_p, I_lhs, I_rhs, I_carry, I_overflow, I_sign,
     else if (I_control[control_rotate_right])
       {O_result, carry} = {carry, I_lhs};
 
-    if (I_mask_p[2])
+    if (I_mask_p)
     begin        
       if (I_control[control_adc_overflow])
         O_overflow = (I_lhs[7] != O_result[7]) && (I_lhs[7] == rhs[7]);
@@ -69,7 +69,7 @@ module core_alu (I_control, I_mask_p, I_lhs, I_rhs, I_carry, I_overflow, I_sign,
         O_overflow = I_rhs[6];
     end
       
-    if (I_mask_p[3])
+    if (I_mask_p)
     begin      
       if (I_control[control_result_sign])
         O_sign = O_result[7];
@@ -77,7 +77,7 @@ module core_alu (I_control, I_mask_p, I_lhs, I_rhs, I_carry, I_overflow, I_sign,
         O_sign = I_rhs[7];      
     end
     
-    if (I_mask_p[1])
+    if (I_mask_p)
     begin
       if (I_control[control_result_zero])
         O_zero = ~|O_result;      
@@ -86,7 +86,7 @@ module core_alu (I_control, I_mask_p, I_lhs, I_rhs, I_carry, I_overflow, I_sign,
     if (I_control[control_inv_O_carry])
       carry = ~carry;
 
-    if (I_mask_p[0])
+    if (I_mask_p)
     begin
       if (I_control[control_set_carry])
         O_carry = carry;
