@@ -308,9 +308,9 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_data[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_data
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_oe
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_we
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/core_alu_signals.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/core_decoder.sv
 set_global_assignment -name SOURCE_FILE src/core/core_control.svi
-set_global_assignment -name SYSTEMVERILOG_FILE src/core/core_alu_control.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/widget.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/video.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/top.sv
