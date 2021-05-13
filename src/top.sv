@@ -48,12 +48,25 @@ module top(
   output   wire      jp1_sel);
 
 	
+	bit[23:0] hold_reset;
+	
+	wire reset_is_held = hold_reset != 24'd0;
+	
+	always @(posedge clock)
+	begin
+		if (~reset)
+			hold_reset <= 24'hffffff;			
+		else if (hold_reset != 24'd0)
+			hold_reset <= hold_reset - 24'd1;
+	end
+	
+		
 	wire W_pll_clock0;
 	wire W_pll_locked;
 	
 	m_altera_pll instance_of_altera_pll(
-    .refclk   ( clock),
-	  .rst      (~reset),
+    .refclk   (clock),
+	  .rst      (reset_is_held),
     .outclk_0 (W_pll_clock0),
     .locked   (W_pll_locked));
 	
