@@ -310,8 +310,7 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_oe
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_we
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE output_files/stp1.stp
-set_global_assignment -name SLD_FILE db/stp1_auto_stripped.stp
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/test_cart_01_basics.sv
 set_global_assignment -name SOURCE_FILE assets/mems/vid.mem
 set_global_assignment -name SOURCE_FILE assets/mems/test.mem
 set_global_assignment -name SOURCE_FILE assets/mems/8x16.mem
@@ -332,3 +331,5 @@ set_global_assignment -name SYSTEMVERILOG_FILE src/core/core.sv
 set_global_assignment -name SDC_FILE src/constraints.sdc
 set_global_assignment -name QIP_FILE src_ip/m_altera_pll.qip
 set_global_assignment -name SIP_FILE src_ip/m_altera_pll.sip
+set_global_assignment -name SLD_FILE db/stp1_auto_stripped.stp
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
