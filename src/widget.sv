@@ -102,14 +102,13 @@ module widget (I_sys_clock, I_sys_reset, O_vid_clock, O_vid_blank, O_vid_hsync, 
   wire        W_vid_vsync ;
   wire        W_vid_clock_rise;
  
-  always @(posedge I_sys_clock)
-  begin
-    if (W_vid_clock_rise)
+  always @(posedge I_sys_clock) 
+    if (W_vid_clock_rise)   
     begin
       O_vid_vsync <= W_vid_vsync;
       O_vid_hsync <= W_vid_hsync;
     end
-  end
+  
      
   /* Video and video memory*/        
   video inst_video (
@@ -155,4 +154,20 @@ module widget (I_sys_clock, I_sys_reset, O_vid_clock, O_vid_blank, O_vid_hsync, 
     .O_irq        (W_core_irq),
 
     .I_chr_addr   (W_video_addr), 
-    
+    .I_chr_wren   (W_video_wren & ~W_video_mem_select),
+    .I_chr_data   (W_video_wr_data), 
+    .O_chr_data   (W_cart_chr_O_data), 
+
+    .O_ciram_ce   (W_cart_ciram_ce), 
+    .O_ciram_a10  (W_cart_ciram_a10), 
+    .O_ciram_a11  (W_cart_ciram_a11)
+  );
+
+  initial begin
+  `ifdef VERILATOR
+    $dumpfile("trace/widget.fst");
+    $dumpvars(999, inst_core);    
+  `endif
+  end    
+
+endmodule

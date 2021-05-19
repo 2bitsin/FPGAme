@@ -138,4 +138,15 @@ module video (
         begin
           if (vcounter == 16'd241)
             W_vblank <= 1'b1;
-          if (vcounter == 16'd
+          if (vcounter == 16'd261)
+            W_vblank <= 1'b0;
+        end
+
+      end
+      clk_tick <= clk_tick + 2'd1;
+      clk_last <= O_vid_clock;      
+    end
+  end
+
+endmodule
+
