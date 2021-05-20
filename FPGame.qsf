@@ -310,6 +310,13 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_oe
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_we
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE output_files/stp1.stp
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/components/sr_latch.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/components/edge_trig.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/components/compare.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/components/count_up.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/components/register.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/components/memory.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/components/delay.sv
 set_global_assignment -name SDC_FILE src/constraints.sdc
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/games/super_mario.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/games/popeye.sv
@@ -319,9 +326,8 @@ set_global_assignment -name SYSTEMVERILOG_FILE src/core/games/donkey_kong.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/games/balloon_fight.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/widget.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/video_color_tab.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/video_timing.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/video.sv
-set_global_assignment -name SYSTEMVERILOG_FILE src/core/register.sv
-set_global_assignment -name SYSTEMVERILOG_FILE src/core/memory.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/core_isexec.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/core_irq.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/core_dma.sv
