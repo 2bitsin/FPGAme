@@ -51,13 +51,14 @@ module video (
   
 /* Video timing generator */
 
-  wire[15:0]      W_hcount        ;
-  wire[15:0]      W_vcount        ;
-  wire            W_hcount_zero   = (W_hcount == 16'd0);
-  wire            W_vblank_flag   ;
-  wire            W_vblank_clear  = 1'b0;
+  wire[15:0]      W_hcount         ;
+  wire[15:0]      W_vcount         ;
+  wire            W_not_vblank     ;
+  wire            W_not_hblank     ;
 
-  assign          O_host_nmi      = ~(W_vblank_flag & R_enable_nmi);
+  wire            W_hcount_zero    = W_hcount == 16'd0 ;
+  wire            W_prerender_line = W_vcount == 16'd261;
+  wire            W_rendering_line = W_not_vblank | W_prerender_line;
 
   video_timing inst_timing (
     .I_clock      (I_clock),
@@ -68,11 +69,19 @@ module video (
     .O_hsync      (O_vid_hsync),
     .O_vsync      (O_vid_vsync),
     .O_hcount     (W_hcount),
-    .O_vcount     (W_vcount)  
+    .O_vcount     (W_vcount),
+    .O_not_hblank (W_not_hblank),
+    .O_not_vblank (W_not_vblank)
   );
 
 /* Vblank flag */
   
+  wire            W_vblank_flag   ;
+  assign          O_host_nmi      = ~(W_vblank_flag & W_enable_nmi);
+
+  wire            W_vblank_clear  ;
+  assign          W_vblank_clear  = W_decode_register[2] & W_host_rden; 
+
   sr_latch #(.P_width (1)) inst_vblank_flag (
     .I_clock      (I_clock), 
     .I_reset      (I_reset),
@@ -82,45 +91,45 @@ module video (
   );
 
 /* Color palette and lookup */
+  wire            W_palette_select = O_cart_addr >= 14'h3f00;
+  wire[5:0]       W_palette_O_data;
 
   video_color_tab inst_color_tab(
     .I_clock      (I_clock),
     .I_reset      (I_reset),
-    .I_addr       (5'b0),
-    .I_wren       (1'b0),
-    .I_data       (6'b0),
-    .O_data       (), 
+    .I_addr       (I_host_addr [4:0]),
+    .I_wren       (W_host_wren & W_palette_select),
+    .I_data       (R_data_latch),
+    .O_data       (W_palette_O_data), 
     .I_index      ({W_vcount[7:6], W_hcount[7:5]}),
     .O_red        (O_vid_red),
     .O_green      (O_vid_green),
     .O_blue       (O_vid_blue)
   );
 
+/* Primary OAM */
+
+  memory #(.P_addr_bits (8)) inst_primary_oam (
+    .I_clock      (I_clock),
+
+    .I_addr0      (R_OAM_addr),
+    .I_data0      (R_data_latch),
+    .I_wren0      (W_host_wren & W_decode_register[4] & ~W_rendering_line),    
+    .O_data0      (R_OAM_data),
+
+    .I_addr1      (8'b0),
+    .I_data1      (8'b0),
+    .I_wren1      (1'b0),    
+    .O_data1      ()
+  );
+
 /* Decode host address */
 
-  wire[7:0] W_decode_register;
-  decoder #(.P_width(3))  inst_decode_register( 
+  wire[7:0]       W_decode_register;
+
+  decoder #(.P_width(3)) inst_decode_register( 
     .O_unpacked   (W_decode_register),
     .I_packed     (I_host_addr[2:0] )
   );
-
-/* PPU Registers */
-
-  bit R_enable_nmi;
-
-
-  always @(posedge I_clock, negedge I_reset)
-  begin
-    if (~I_reset)
-    begin
-      R_enable_nmi <= 1'b0;
-    end 
-    else begin
-      
-
-    end
-  end
-
-endmodule
-
-
+  
+/* PPU Register logic 
