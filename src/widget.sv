@@ -180,4 +180,16 @@ module widget (I_sys_clock, I_sys_reset, O_vid_clock, O_vid_blank, O_vid_hsync, 
     .I_chr_data   (W_video_wr_data), 
     .O_chr_data   (W_cart_chr_O_data), 
 
-    .O_ciram_ce   (W_cart_cir
+    .O_ciram_ce   (W_cart_ciram_ce), 
+    .O_ciram_a10  (W_cart_ciram_a10), 
+    .O_ciram_a11  (W_cart_ciram_a11)
+  );
+
+  initial begin
+  `ifdef VERILATOR
+    $dumpfile("trace/widget.fst");
+    $dumpvars(999, inst_core);    
+  `endif
+  end    
+
+endmodule
