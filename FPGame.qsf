@@ -310,9 +310,10 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_oe
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_we
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE output_files/stp1.stp
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/video_address.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/video_control.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/video_oam.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/video_regdec.sv
-set_global_assignment -name SYSTEMVERILOG_FILE src/core/widget.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/video_timing.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/video_color_tab.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/video.sv
@@ -338,6 +339,7 @@ set_global_assignment -name SYSTEMVERILOG_FILE src/core/components/delay.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/components/decoder.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/components/count_up.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/components/compare.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/widget.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/top.sv
 set_global_assignment -name SDC_FILE src/constraints.sdc
 set_global_assignment -name QIP_FILE src_ip/m_altera_pll.qip
