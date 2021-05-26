@@ -310,6 +310,8 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_oe
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mb1_we
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE output_files/stp1.stp
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/video_composit.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/core/video_background.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/video_address.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/video_control.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/video_oam.sv
