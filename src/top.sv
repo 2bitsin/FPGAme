@@ -79,6 +79,27 @@ module top(
     vid_vsync, 
     vid_red, 
     vid_green, 
-    vid_blue);    
+    vid_blue,		
+		{	
+			~jp1_up, 
+			~jp1_down, 
+			~jp1_left, 
+			~jp1_right, 
+			~jp1_a_b, 
+			~jp1_c_s
+		}, 
+		jp1_sel,
+		{	
+			~jp0_up, 
+			~jp0_down, 
+			~jp0_left, 
+			~jp0_right, 
+			~jp0_a_b, 
+			~jp0_c_s
+		}, 
+		jp0_sel);
+		
+		assign io_tx = jp1_sel 	;
+		assign io_rx = jp1_right ;
   
 endmodule
