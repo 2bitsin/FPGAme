@@ -314,7 +314,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE src/core/video.sv
 set_global_assignment -name SOURCE_FILE src/core/core_control.svh
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/core_isexec.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/core_irq.sv
-set_global_assignment -name SYSTEMVERILOG_FILE src/core/core_dma.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/core_decode.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/core_alu.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/core/core.sv
