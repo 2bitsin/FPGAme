@@ -81,25 +81,25 @@ module top(
     vid_green, 
     vid_blue,		
 		{	
-			~jp1_up, 
-			~jp1_down, 
-			~jp1_left, 
-			~jp1_right, 
-			~jp1_a_b, 
-			~jp1_c_s
+			~jp1_c_s,   // v
+			~jp1_a_b,   // v
+			~jp1_right, // v
+			~jp1_left,  // v
+			~jp1_down,  // v
+			~jp1_up 		// v
 		}, 
 		jp1_sel,
 		{	
-			~jp0_up, 
-			~jp0_down, 
-			~jp0_left, 
-			~jp0_right, 
-			~jp0_a_b, 
-			~jp0_c_s
-		}, 
-		jp0_sel);
+			~jp0_c_s,   // v
+			~jp0_a_b,   // v
+			~jp0_right, // v
+			~jp0_left,  // v
+			~jp0_down,  // v
+			~jp0_up 		// v
+		},     
+		jp0_sel);     // v
 		
-		assign io_tx = jp1_sel 	;
-		assign io_rx = jp1_right ;
+		assign io_tx = jp1_sel ;
+		assign io_rx = jp1_c_s ;
   
 endmodule
