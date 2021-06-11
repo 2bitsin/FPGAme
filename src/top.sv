@@ -88,7 +88,7 @@ module top(
 			~jp1_down,  // v
 			~jp1_up 		// v
 		}, 
-		jp1_sel,
+		jp1_sel,			// v
 		{	
 			~jp0_c_s,   // v
 			~jp0_a_b,   // v
@@ -97,7 +97,11 @@ module top(
 			~jp0_down,  // v
 			~jp0_up 		// v
 		},     
-		jp0_sel);     // v
+		jp0_sel,    	// v
+		aud_mclk,
+		aud_wclk,
+		aud_sclk,
+		aud_data); 
 		
 		assign io_tx = jp1_sel ;
 		assign io_rx = jp1_c_s ;
