@@ -31,7 +31,7 @@ module core_audio (I_clock, I_reset, I_phy2, I_address, I_rdwr, I_data, O_data, 
     16'h0000, 16'h0647, 16'h0C8B, 16'h12C7, 16'h18F8, 16'h1F19, 16'h2527, 16'h2B1E, 
     16'h30FB, 16'h36B9, 16'h3C55, 16'h41CD, 16'h471C, 16'h4C3F, 16'h5132, 16'h55F4, 
     16'h5A81, 16'h5ED6, 16'h62F1, 16'h66CE, 16'h6A6C, 16'h6DC9, 16'h70E1, 16'h73B4, 
-    16'h7640, 16'h7883, 16'h7A7C, 16'h7C28, 16'h7D89, 16'h7E9C, 16'h7F61, 16'h7FD7,    
+    16'h7640, 16'h7883, 16'h7A7C, 16'h7C28, 16'h7D89, 16'h7E9C, 16'h7F61, 16'h7FD7   
   };
 
    
